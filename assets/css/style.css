@@ -15,6 +15,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: var(--background-color);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body.correct {
@@ -31,6 +32,7 @@ body.incorrect {
     width: 800px;
     max-width: 80%;
     padding: 10px;
+    background-color: rgba(255, 255, 255, 0.75);
 }
 
 .btn-grid {
@@ -43,4 +45,31 @@ body.incorrect {
 
 .btn {
     background-color: white;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: var(--text-color-dark);
+    cursor: pointer;
 }
+
+.btn:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+}
+
+.start-btn,
+.next-btn {
+    font-size: 24px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide {
+    display: none;
+}
+
