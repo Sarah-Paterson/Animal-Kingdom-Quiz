@@ -89,7 +89,8 @@ p {
 }
 
 .start-btn,
-.next-btn {
+.next-btn,
+.input-btn {
     font-size: 24px;
     font-weight: bold;
     padding: 10px 20px;

@@ -5,12 +5,17 @@
 
 const startButton = document.getElementById("start-btn");
 const nextButton = document.getElementById("next-btn");
+const inputButton = document.getElementById("input-btn");
 
 const questionContainer = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
 
 const minuteTimer = document.getElementById("timer");
+
+const scoreBoardContainer = document.getElementById("score-board");
+const scoreBoardElement = document.getElementById("score-board-scores");
+const scoresElement = document.getElementById("score");
 
 let shuffledQuestions,currentQuestionIndex;
 let quizScore = 0;
@@ -24,34 +29,7 @@ nextButton.addEventListener("click", () =>{
     setNextQuestion()
 });
 
-// timer functions -- from stackoverflow
-// function setTimer(duration, display) {
-//     var timer = duration, minutes, seconds;
-//     setInterval(function () {
-//         minutes = parseInt(timer / 60, 10);
-//         seconds = parseInt(timer % 60, 10);
-
-//         minutes = minutes < 10 ? "0" + minutes : minutes;
-//         seconds = seconds < 10 ? "0" + seconds : seconds;
-
-//         display.textContent = minutes + ":" + seconds;
-
-//         if (--timer < 0) {
-//             timer = duration;
-//             console.log("out of time");
-//             // Scoreboard
-//         }
-//     }, 1000);
-// }
-
-// function startTimer() {
-//     var oneMinute = 60 * 1,
-//         display = document.querySelector("#timer");
-//     setTimer(oneMinute, display);
-// };
-
 function setTime() {
-  // Sets interval in variable
   let timerInterval = setInterval(function() {
     secondsLeft--;
     minuteTimer.textContent = secondsLeft;
@@ -119,8 +97,10 @@ function selectAnswer(e){
     if (shuffledQuestions.length > currentQuestionIndex + 1) {
         nextButton.classList.remove("hide");
     } else {
-        startButton.innerText ="Restart";
-        startButton.classList.remove("hide");
+        // startButton.innerText ="Imput Score";
+        // startButton.classList.remove("hide");
+        startButton.classList.add("hide");
+        inputButton.classList.remove("hide");
     } 
 
     if(selectedButton.dataset = correct) {
@@ -144,6 +124,10 @@ function setStatusClass(element, correct) {
 function clearStatusClass(element){
     element.classList.remove("correct");
     element.classList.remove("wrong")
+}
+
+function showScoreBoard() {
+    scoreBoardContainer.classList.remove("hide")
 }
 
 const questions = [
