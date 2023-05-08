@@ -21,13 +21,33 @@ let shuffledQuestions,currentQuestionIndex;
 let quizScore = 0;
 let secondsLeft = 60;
 
+// TODO: add imputScore()
+// TODO: add showScoreBoard()
+// combine both by making imput score a prompt?
+// TODO: add scores to local storage
+// TODO: list all scores with highest at the top
+// TODO: update scores to percentages so that final score can be 0-100%
+// add two more questions to make it an even 10?
+// shuffle answers yourself (unless you can find a function)
 
-startButton.addEventListener("click", startGame)
+// if there's time...
+
+// figure out a way to shuffle the answers in a function
+// figure out a way to use the DAK video as the backdrop to the webpage on loop
+// add DAK logo and text on the front page 
+
+// remove next button? have the answers just move to next question?
+// remove color change and add "correct" or "wrong"?
+
+
+startButton.addEventListener("click", startGame);
 
 nextButton.addEventListener("click", () =>{
     currentQuestionIndex++
     setNextQuestion()
 });
+
+inputButton.addEventListener("click", inputScore);
 
 function setTime() {
   let timerInterval = setInterval(function() {
@@ -124,6 +144,10 @@ function setStatusClass(element, correct) {
 function clearStatusClass(element){
     element.classList.remove("correct");
     element.classList.remove("wrong")
+}
+
+function inputScore() {
+
 }
 
 function showScoreBoard() {
