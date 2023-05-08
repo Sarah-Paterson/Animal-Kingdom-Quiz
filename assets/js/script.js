@@ -11,6 +11,8 @@ const questionContainer = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
 
+const inputScoreContainer = document.getElementById("input-score");
+
 const minuteTimer = document.getElementById("timer");
 
 const scoreBoardContainer = document.getElementById("score-board");
@@ -20,6 +22,7 @@ const scoresElement = document.getElementById("score");
 let shuffledQuestions,currentQuestionIndex;
 let quizScore = 0;
 let secondsLeft = 60;
+let inputName;
 
 // TODO: add imputScore()
 // TODO: add showScoreBoard()
@@ -40,7 +43,7 @@ let secondsLeft = 60;
 // remove color change and add "correct" or "wrong"?
 
 
-startButton.addEventListener("click", startGame);
+startButton.addEventListener("click", startQuiz);
 
 nextButton.addEventListener("click", () =>{
     currentQuestionIndex++
@@ -62,7 +65,7 @@ function setTime() {
   }, 1000);
 }
 
-function startGame() {
+function startQuiz() {
     setTime();
 
     startButton.classList.add("hide")
@@ -151,8 +154,28 @@ function inputScore() {
 }
 
 function showScoreBoard() {
-    scoreBoardContainer.classList.remove("hide")
+    scoreBoardContainer.classList.remove("hide");
+    // getScore();
+    // imputScore = 
 }
+
+// Updates win count on screen and sets win count to client storage
+function setScore() {
+    scoresElement.textContent = inputName, quizScore, "/8";
+    localStorage.setItem("quiz-score", inputName, quizScore, "/8");
+  }
+
+function getScore() {
+    // Get stored value from client storage, if it exists
+    var storedScore = localStorage.getItem("winCount");
+    if (storedScore === null) {
+      scoresElement.classList.add("hide");
+    } else {
+      scoresElement.classList.remove("hide")
+      quizScore = storedScore;
+    }
+    scoresElement.textContent = inputName, quizScore, "/8";
+  }
 
 const questions = [
     {
