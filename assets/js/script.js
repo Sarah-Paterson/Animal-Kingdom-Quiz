@@ -52,22 +52,20 @@ nextButton.addEventListener("click", () =>{
 
 function setTime() {
   // Sets interval in variable
-  var timerInterval = setInterval(function() {
+  let timerInterval = setInterval(function() {
     secondsLeft--;
-    timeEl.textContent = secondsLeft + " seconds left till colorsplosion.";
+    minuteTimer.textContent = secondsLeft;
 
     if(secondsLeft === 0) {
-      // Stops execution of action at set interval
       clearInterval(timerInterval);
-      // Calls function to create and append image
-      sendMessage();
+      // scoreboard
     }
 
   }, 1000);
 }
 
 function startGame() {
-    // startTimer();
+    setTime();
 
     startButton.classList.add("hide")
     shuffledQuestions = questions.sort(() =>Math.random() -0.5);
@@ -128,13 +126,8 @@ function selectAnswer(e){
     if(selectedButton.dataset = correct) {
         quizScore++;
     } else {
-        
-    }
-
-    // document.getElementById("right-answers").innerText = quizScore;
-    if (minuteTimer === "00:00") {
-        clearInterval(setTimer);
-        alert("Time expired");
+        secondsLeft--;
+        secondsLeft--;
     }
 }
 
