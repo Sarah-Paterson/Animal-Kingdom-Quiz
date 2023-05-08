@@ -33,6 +33,7 @@ main {
 
 p {
     background-color: var(--transparent-background-color-dark);
+    color: var(--text-color-light);
     display: inline-flex;
     align-items: center;
     justify-content: center;
