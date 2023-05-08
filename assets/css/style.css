@@ -94,7 +94,10 @@ p {
 
 .start-btn,
 .next-btn,
-.input-btn {
+.input-btn,
+.view-scores-btn,
+.clear-scores-btn,
+.try-again-btn {
     font-size: 24px;
     font-weight: bold;
     padding: 10px 20px;
@@ -104,6 +107,7 @@ p {
 #score-board-header {
     font-size: 30px;
     font-weight: bold;
+    color: var(--text-color-dark);
 }
 
 .score-grid {
