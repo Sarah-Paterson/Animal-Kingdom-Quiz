@@ -27,6 +27,7 @@ let shuffledQuestions,currentQuestionIndex;
 let quizScore = 0;
 let secondsLeft = 60;
 let inputName;
+let storedScore = localStorage.getItem("quizScore");
 
 // TODO: add imputScore()
 // TODO: add showScoreBoard()
@@ -70,6 +71,10 @@ function setTime() {
 
   }, 1000);
 }
+
+// function init() {
+//     getScore();
+//   }
 
 function startQuiz() {
     setTime();
@@ -168,82 +173,93 @@ function inputNameFunction() {
 
     console.log("imputNameFunction");
 
-    checkHighScore(account.score);
+    // checkHighScore(account.score);
 }
 
 function showScoreBoard() {
     viewScoresButton.classList.add("hide");
     scoreBoardContainer.classList.remove("hide");
     tryAgainButton.classList.remove("hide");
-    getScore();
+    // getScore();
+    setScore();
     console.log("showScoreBoard")
 }
 
 function setScore() {
-    scoresElement.textContent = inputName, quizScore, "/8";
-    localStorage.setItem("quizScore", inputName, quizScore, "/8");
-}
-
-function checkHighScore(quizScore) {
-    const highScores = JSON.parse(localStorage.getItem("quizScore")) ?? [];
-    const lowestScore = highScores[scoreBoardNumber - 1]?.quizScore ?? 0;
-    
-    if (quizScore > lowestScore) {
-      saveHighScore(quizScore, highScores); // TODO
-      showHighScores(); // TODO
+    // scoresElement.textContent = inputName, quizScore, "/8";
+    let results = {
+        score: storedScore, 
+        inputName: inputName,
+        quizScore: quizScore + "/8",
     }
+    localStorage.setItem("results", JSON.stringify(results));
 }
+// localStorage.getItem("results", JSON.parse(results));
 
-function saveHighScore(quizScore, highScores) {
-    const name = inputName;
-    const newScore = { quizScore, name };
+
+
+// function checkHighScore(quizScore) {
+//     const highScores = JSON.parse(localStorage.getItem(storedScore)) ?? [];
+//     const lowestScore = highScores[scoreBoardNumber - 1]?.quizScore ?? 0;
     
-    // 1. Add to list
-    highScores.push(newScore);
+//     if (quizScore > lowestScore) {
+//       saveHighScore(quizScore, highScores); // TODO
+//       showHighScores(); // TODO
+//     }
+// }
+
+// function saveHighScore(quizScore, highScores) {
+//     const name = inputName;
+//     const newScore = { quizScore, name };
+    
+//     // 1. Add to list
+//     highScores.push(newScore);
   
-    // 2. Sort the list
-    highScores.sort((a, b) => b.quizScore - a.quizScore);
+//     // 2. Sort the list
+//     highScores.sort((a, b) => b.quizScore - a.quizScore);
     
-    // 3. Select new list
-    highScores.splice(scoreBoardNumber);
+//     // 3. Select new list
+//     highScores.splice(scoreBoardNumber);
     
-    // 4. Save to local storage
-    localStorage.setItem("quizScore", JSON.stringify(highScores));
-};
+//     // 4. Save to local storage
+//     localStorage.setItem(storedScore, JSON.stringify(highScores));
+// };
 
-const highScoreList = document.getElementById("quizScore");
+// const highScoreList = document.getElementById(storedScore);
 
-scoreBoardElement.innerHTML = highScoreList.map((quizScore) => 
-  `<li>${quizScore.quizScore} - ${quizScore.name}`
-);
+// if (storedScore === null) {
+//         //   scoresElement.classList.add("hide");
+//         } else {
+//         //   scoresElement.classList.remove("hide")
+//         scoreBoardElement.innerHTML = highScoreList.map((quizScore) => 
+//         `<li>${quizScore.quizScore} - ${quizScore.name}`);
+//         }
 
-function showHighScores() {
-    const highScores = JSON.parse(localStorage.getItem("quizScore")) ?? [];
-    const highScoreList = document.getElementById("quizScore");
+// function showHighScores() {
+//     const highScores = JSON.parse(localStorage.getItem(storedScore)) ?? [];
+//     const highScoreList = document.getElementById(storedScore);
     
-    highScoreList.innerHTML = highScores
-      .map((quizScore) => `<li>${quizScore.quizScore} - ${quizScore.name}`)
-      .join('');
-  }
+//     highScoreList.innerHTML = highScores
+//       .map((quizScore) => `<li>${quizScore.quizScore} - ${quizScore.name}`)
+//       .join('');
+//   }
 
 // function getScore() {
 //     inputNameContainer.classList.add("hide");
 //     saveButton.classList.add("hide");
     
-
-//     var storedScore = localStorage.getItem("quizScore");
 //     if (storedScore === null) {
 //     //   scoresElement.classList.add("hide");
 //     } else {
 //     //   scoresElement.classList.remove("hide")
 //       quizScore = storedScore;
 //     }
-//     scoresElement.innerText = inputName, quizScore, "/8";
+//     // scoresElement.innerText = inputName, quizScore, "/8";
 // }
 
-function clearScores() {
-    localStorage.clear();
-}
+// function clearScores() {
+//     localStorage.clear();
+// }
 
 // function resetGame() {
 //     // Resets win and loss counts
@@ -255,6 +271,8 @@ function clearScores() {
 // }
 // // Attaches event listener to button
 // resetButton.addEventListener("click", resetGame);
+
+// init();
 
 const questions = [
     {
