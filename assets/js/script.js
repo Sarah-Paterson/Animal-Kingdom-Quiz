@@ -1,20 +1,17 @@
-
-
-
-
-
 const startButton = document.getElementById("start-btn");
 const nextButton = document.getElementById("next-btn");
 const saveButton = document.getElementById("input-btn");
 const tryAgainButton = document.getElementById("try-again-btn");
 const clearButton = document.getElementById("clear-scores-btn");
 const viewScoresButton = document.getElementById("view-scores-btn");
+const completeButton = document.getElementById("complete-btn");
 
 const questionContainer = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
 
 const inputNameContainer = document.getElementById("input-name");
+const loadingPageContainer = document.getElementById("loading-page");
 
 const minuteTimer = document.getElementById("timer");
 
@@ -26,8 +23,9 @@ const scoreBoardNumber = 5;
 let shuffledQuestions,currentQuestionIndex;
 let quizScore = 0;
 let secondsLeft = 60;
-let inputName;
-let storedScore = localStorage.getItem("quizScore");
+let inputName = document.getElementById("myText");
+let totalScore = JSON.parse(localStorage.getItem("results")) || [];
+
 
 // TODO: add imputScore()
 // TODO: add showScoreBoard()
@@ -49,15 +47,15 @@ let storedScore = localStorage.getItem("quizScore");
 
 
 startButton.addEventListener("click", startQuiz);
-
 nextButton.addEventListener("click", () =>{
     currentQuestionIndex++
     setNextQuestion()
 });
-
 saveButton.addEventListener("click", inputNameFunction);
-
 viewScoresButton.addEventListener("click", showScoreBoard);
+completeButton.addEventListener("click", loadingPage);
+tryAgainButton.addEventListener("click", location.reload)
+
 
 function setTime() {
   let timerInterval = setInterval(function() {
@@ -72,13 +70,10 @@ function setTime() {
   }, 1000);
 }
 
-// function init() {
-//     getScore();
-//   }
 
 function startQuiz() {
     setTime();
-
+    
     startButton.classList.add("hide")
     shuffledQuestions = questions.sort(() =>Math.random() -0.5);
     currentQuestionIndex = 0;
@@ -131,8 +126,6 @@ function selectAnswer(e){
     if (shuffledQuestions.length > currentQuestionIndex + 1) {
         nextButton.classList.remove("hide");
     } else {
-        // startButton.innerText ="Imput Score";
-        // startButton.classList.remove("hide");
         startButton.classList.add("hide");
         saveButton.classList.remove("hide");
     } 
@@ -163,116 +156,61 @@ function clearStatusClass(element){
 function inputNameFunction() {
     minuteTimer.classList.add("hide");
     secondsLeft = 0;
-
+    completeButton.classList.remove("hide");
     inputNameContainer.classList.remove("hide");
     questionContainer.classList.add("hide");
     saveButton.classList.add("hide");
-    viewScoresButton.classList.remove("hide");
 
-    inputName = document.getElementById("myText").value;
+    // let playerInitials = inputName.value;
+    // setScore(playerInitials);
 
-    console.log("imputNameFunction");
-
-    // checkHighScore(account.score);
 }
 
+function loadingPage() {
+    getScore();
+    completeButton.classList.add("hide");
+    viewScoresButton.classList.remove("hide");
+    inputNameContainer.classList.add("hide");
+    loadingPageContainer.classList.remove("hide");
+
+}
+
+
 function showScoreBoard() {
+    loadingPageContainer.classList.add("hide");
     viewScoresButton.classList.add("hide");
     scoreBoardContainer.classList.remove("hide");
     tryAgainButton.classList.remove("hide");
-    // getScore();
-    setScore();
-    console.log("showScoreBoard")
+    clearButton.classList.remove("hide");
+    
+    let playerInitials = inputName.value;
+    setScore(playerInitials);
 }
 
-function setScore() {
-    // scoresElement.textContent = inputName, quizScore, "/8";
+
+function setScore(playerInitials) {
     let results = {
-        score: storedScore, 
-        inputName: inputName,
-        quizScore: quizScore + "/8",
+        inputName: playerInitials,
+        quizScore: quizScore + "/8"
     }
-    localStorage.setItem("results", JSON.stringify(results));
+    
+    totalScore.push(results);
+    console.log('total score', totalScore);
+    localStorage.setItem("results", JSON.stringify(totalScore));
+ 
 }
-// localStorage.getItem("results", JSON.parse(results));
 
 
+function getScore() {
+    for (let i = 0; i < totalScore.length; i++) {
+        const element = totalScore[i];
 
-// function checkHighScore(quizScore) {
-//     const highScores = JSON.parse(localStorage.getItem(storedScore)) ?? [];
-//     const lowestScore = highScores[scoreBoardNumber - 1]?.quizScore ?? 0;
-    
-//     if (quizScore > lowestScore) {
-//       saveHighScore(quizScore, highScores); // TODO
-//       showHighScores(); // TODO
-//     }
-// }
+        let playerName = element.inputName;
+        let playerFinalScore = element.quizScore;
+        
+    }
+}
 
-// function saveHighScore(quizScore, highScores) {
-//     const name = inputName;
-//     const newScore = { quizScore, name };
-    
-//     // 1. Add to list
-//     highScores.push(newScore);
-  
-//     // 2. Sort the list
-//     highScores.sort((a, b) => b.quizScore - a.quizScore);
-    
-//     // 3. Select new list
-//     highScores.splice(scoreBoardNumber);
-    
-//     // 4. Save to local storage
-//     localStorage.setItem(storedScore, JSON.stringify(highScores));
-// };
-
-// const highScoreList = document.getElementById(storedScore);
-
-// if (storedScore === null) {
-//         //   scoresElement.classList.add("hide");
-//         } else {
-//         //   scoresElement.classList.remove("hide")
-//         scoreBoardElement.innerHTML = highScoreList.map((quizScore) => 
-//         `<li>${quizScore.quizScore} - ${quizScore.name}`);
-//         }
-
-// function showHighScores() {
-//     const highScores = JSON.parse(localStorage.getItem(storedScore)) ?? [];
-//     const highScoreList = document.getElementById(storedScore);
-    
-//     highScoreList.innerHTML = highScores
-//       .map((quizScore) => `<li>${quizScore.quizScore} - ${quizScore.name}`)
-//       .join('');
-//   }
-
-// function getScore() {
-//     inputNameContainer.classList.add("hide");
-//     saveButton.classList.add("hide");
-    
-//     if (storedScore === null) {
-//     //   scoresElement.classList.add("hide");
-//     } else {
-//     //   scoresElement.classList.remove("hide")
-//       quizScore = storedScore;
-//     }
-//     // scoresElement.innerText = inputName, quizScore, "/8";
-// }
-
-// function clearScores() {
-//     localStorage.clear();
-// }
-
-// function resetGame() {
-//     // Resets win and loss counts
-//     winCounter = 0;
-//     loseCounter = 0;
-//     // Renders win and loss counts and sets them into client storage
-//     setWins()
-//     setLosses()
-// }
-// // Attaches event listener to button
-// resetButton.addEventListener("click", resetGame);
-
-// init();
 
 const questions = [
     {

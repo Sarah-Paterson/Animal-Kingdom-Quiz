@@ -31,13 +31,20 @@
                 </div>
                 <div id="input-name" class="hide">
                     <h3>Please enter your initals to save your score!</h3>
-                    <input type="text" id="myText" aria-label="text box">
+                    <input type="text" id="myText" aria-label="text box"/>
                     <!-- <p id="enter-text"></p> -->
+                </div>
+                <div id="loading-page" class="hide">
+                    <h1>You did it!</h1>
+                    <h2>Your score has been saved. Play again or see the score board!</h2>
                 </div>
                 <div id="score-board" class="hide">
                     <h2 id="score-board-header">Score Board</h2>
                     <ul id="score-board-scores" class="score-grid">
-                        <li class="score">Top Score</li>
+                        <!-- <li class="score" style="display: flex; flex-direction: row;">
+                            <p>player initials</p>
+                            <p>player score</p> -->
+                        </li>
                     </ul>
                 </div>
                 <div class="controls">
@@ -47,12 +54,13 @@
                     <button id="input-btn" class="input-btn btn hide">Save Score</button>
                     <button id="clear-scores-btn" class="clear-scores-btn btn hide">Clear Scores</button>
                     <button id="try-again-btn" class="try-again-btn btn hide">Try Again</button>
+                    <button id="complete-btn" class="complete-btn btn hide">All Done!</button>
                 </div>
             </div>
 
-            <div class="score">
+            <!-- <div class="score">
                 <span id="right-answers"></span>
-            </div>
+            </div> -->
 
         </main>
         <script src="./assets/js/script.js"></script>

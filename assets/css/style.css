@@ -52,7 +52,6 @@ p {
     padding: 10px;
     font-size: 18px;
     text-align: center;
-    /* box-shadow: 0 0 10px 2px; */
 }
 
 .btn-grid {
@@ -67,9 +66,11 @@ p {
     background-color: var(--button-color);
     border: 1px solid var(--button-color);
     border-radius: 5px;
-    padding: 5px 10px;
+    padding: 10px;
     color: var(--text-color-dark);
     outline: none;
+    font-size: 20px;
+    margin: 5px 10px;
 }
 
 .btn {
@@ -79,7 +80,6 @@ p {
 .btn:hover {
     background-color: var(--button-color-hover);
     border: 1px solid var(--button-color-hover);
-    /* color: var(--text-color-light); */
 }
 
 .btn.correct {
@@ -97,7 +97,8 @@ p {
 .input-btn,
 .view-scores-btn,
 .clear-scores-btn,
-.try-again-btn {
+.try-again-btn,
+.complete-btn {
     font-size: 24px;
     font-weight: bold;
     padding: 10px 20px;
