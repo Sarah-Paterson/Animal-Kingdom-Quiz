@@ -179,6 +179,7 @@ function showScoreBoard() {
     scoreBoardContainer.classList.remove("hide");
     tryAgainButton.classList.remove("hide");
     completeButton.classList.add("hide");
+    nextButton.classList.add("hide");
     
     let playerInitials = inputName.value;
     setScore(playerInitials);
@@ -238,9 +239,9 @@ const questions = [
     {
         question: "What was Animal Kingdom\'s opening day?",
         answers : [
-            {text: "April 22, 1998", correct: true},
             {text: "July 7, 1997", correct: false},
             {text: "June 21, 1995", correct: false},
+            {text: "April 22, 1998", correct: true},
             {text: "May 1, 2000", correct: false},
         ],
     },
@@ -256,10 +257,10 @@ const questions = [
     {
         question: "How many miles did the team of Imageneers travel in search of the essential look of life in the wild?",
         answers : [
-            {text: "500,000 miles", correct: true},
             {text: "350,000 miles", correct: false},
             {text: "100,000 miles", correct: false},
             {text: "250,000 miles", correct: false},
+            {text: "500,000 miles", correct: true},
         ],
     },
     {
@@ -274,8 +275,8 @@ const questions = [
     {
         question: "How many animal carvings are on the tree of life?",
         answers : [
-            {text: "337", correct: true},
             {text: "432", correct: false},
+            {text: "337", correct: true},
             {text: "128", correct: false},
             {text: "224", correct: false},
         ],
@@ -283,19 +284,19 @@ const questions = [
     {
         question: "How many floating mountains are there in the Valley of Mo\'ara on Pandora?",
         answers : [
-            {text: "22", correct: true},
             {text: "18", correct: false},
             {text: "8", correct: false},
+            {text: "22", correct: true},
             {text: "12", correct: false},
         ],
     },
     {
         question: "What animal was first born at Disney\'s Animal Kingdom?",
         answers : [
-            {text: "A Kudu", correct: true},
             {text: "An Elephant", correct: false},
             {text: "An Okapi", correct: false},
             {text: "A Gorilla", correct: false},
+            {text: "A Kudu", correct: true},
         ],
     },
     {
