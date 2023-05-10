@@ -2,7 +2,6 @@ const startButton = document.getElementById("start-btn");
 const nextButton = document.getElementById("next-btn");
 const saveButton = document.getElementById("input-btn");
 const tryAgainButton = document.getElementById("try-again-btn");
-const clearButton = document.getElementById("clear-scores-btn");
 const viewScoresButton = document.getElementById("view-scores-btn");
 const completeButton = document.getElementById("complete-btn");
 
@@ -27,13 +26,7 @@ let inputName = document.getElementById("myText");
 let totalScore = JSON.parse(localStorage.getItem("results")) || [];
 
 
-// TODO: add imputScore()
-// TODO: add showScoreBoard()
-// combine both by making imput score a prompt?
-// TODO: add scores to local storage
-// TODO: list all scores with highest at the top
-// TODO: update scores to percentages so that final score can be 0-100%
-// add two more questions to make it an even 10?
+// TODO: list all scores
 // shuffle answers yourself (unless you can find a function)
 
 // if there's time...
@@ -54,7 +47,7 @@ nextButton.addEventListener("click", () =>{
 saveButton.addEventListener("click", inputNameFunction);
 viewScoresButton.addEventListener("click", showScoreBoard);
 completeButton.addEventListener("click", loadingPage);
-tryAgainButton.addEventListener("click", location.reload)
+tryAgainButton.addEventListener("click", reload);
 
 
 function setTime() {
@@ -133,8 +126,7 @@ function selectAnswer(e){
     if(selectedButton.dataset = correct) {
         quizScore++;
     } else {
-        secondsLeft--;
-        secondsLeft--;
+        secondsLeft -= 5;
     }
 }
 
@@ -153,9 +145,13 @@ function clearStatusClass(element){
     element.classList.remove("wrong")
 }
 
+if(secondsLeft == 0) {
+    inputNameFunction();
+}
+
 function inputNameFunction() {
     minuteTimer.classList.add("hide");
-    secondsLeft = 0;
+    // secondsLeft = 0;
     completeButton.classList.remove("hide");
     inputNameContainer.classList.remove("hide");
     questionContainer.classList.add("hide");
@@ -172,6 +168,7 @@ function loadingPage() {
     viewScoresButton.classList.remove("hide");
     inputNameContainer.classList.add("hide");
     loadingPageContainer.classList.remove("hide");
+    tryAgainButton.classList.remove("hide");
 
 }
 
@@ -181,10 +178,28 @@ function showScoreBoard() {
     viewScoresButton.classList.add("hide");
     scoreBoardContainer.classList.remove("hide");
     tryAgainButton.classList.remove("hide");
-    clearButton.classList.remove("hide");
+    completeButton.classList.add("hide");
     
     let playerInitials = inputName.value;
     setScore(playerInitials);
+
+    for (let i = 0; i < totalScore.length; i++) {
+        let scoreCard = document.createElement("li");
+        // let scoreName = documetn.createElement(p);
+        // let scoreNumber = documetn.createElement(p);
+
+        scoreCard.className = "score";
+        // scoreCard.style = "display: flex; flex-direction: row";
+
+        scoreCard.textContent = totalScore;
+
+        scoreBoardContainer.appendChild(scoreCard);
+        // scoreCard.appendChild(scoreName);
+        // scoreCard.appendChild(scoreNumber);
+
+        // scoreCard.appendChild(totalScore)
+    }
+
 }
 
 
@@ -210,6 +225,13 @@ function getScore() {
         
     }
 }
+
+function reload() {
+    location.reload();
+}
+
+
+
 
 
 const questions = [
