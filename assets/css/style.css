@@ -12,9 +12,10 @@
     --button-color: #91c174;
     --button-color-hover: #cc9b6e;
     --button-color-correct: #003c1d;
-    --button-color-wrong: #351a00; 
+    --button-color-wrong: #c6664f; 
     --text-color-light: white; 
     --text-color-dark: #003c1d; 
+    --text-color-wrong: #661300;
 }
 
 body {
@@ -73,7 +74,6 @@ p {
     margin: 5px 10px;
 }
 
-
 .btn {
     cursor: pointer;
 }
@@ -90,7 +90,7 @@ p {
 
 .btn.wrong {
     background-color: var(--button-color-wrong);
-    color: var(--text-color-light);
+    color: var(--text-color-wrong);
 }
 
 .start-btn,
@@ -123,6 +123,10 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.save-score {
+    font-size: 20px;
 }
 
 .hide {
