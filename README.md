@@ -49,7 +49,7 @@ Once the quiz has been started, each question (randomly selected from the eight 
 ### Quiz Select
 ![Quiz Select Screenshot](assets/images/question-select-screenshot.png "Quiz Select Screenshot")
 
-Scroll over your answers and the tan coloring will show which you’re selecting. Once you pick, the color will change, revealing the correct answer in dark green along with the incorrect answers in red.
+Scroll over your answers and the tan coloring will show which you’re selecting. Once you pick, the color will change to reveal the correct answer in dark green along with the incorrect answers in red and a next button will pop up to continue the quiz.
 
 ### Add Initials to Save
 ![Initials and Save Screenshot](assets/images/save-score-screenshot.png "Initials and Save Screenshot")
@@ -62,8 +62,9 @@ After you’ve moved through all the questions (or if your timer runs out), you�
 Now you’ve successfully walked through the eight question quiz! From here, you have the option to either try again immediately, or view the scoreboard.
 
 ### Scoreboard
+![Done Screenshot](assets/images/score-board-screenshot.png "Done Screenshot")
 
-Here is the scoreboard with the scores saved locally on my computer. I tested my family, and this is the result!
+Here is the scoreboard with the scores saved locally on my computer. I my husband and I both tried the quiz, and this is the result!
 
 ---
 

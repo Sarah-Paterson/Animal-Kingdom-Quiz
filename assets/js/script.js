@@ -186,19 +186,12 @@ function showScoreBoard() {
 
     for (let i = 0; i < totalScore.length; i++) {
         let scoreCard = document.createElement("li");
-        // let scoreName = documetn.createElement(p);
-        // let scoreNumber = documetn.createElement(p);
 
         scoreCard.className = "score";
-        // scoreCard.style = "display: flex; flex-direction: row";
 
-        scoreCard.textContent = totalScore;
+        scoreCard.textContent = totalScore[i].inputName + " - " + totalScore[i].quizScore;
 
         scoreBoardContainer.appendChild(scoreCard);
-        // scoreCard.appendChild(scoreName);
-        // scoreCard.appendChild(scoreNumber);
-
-        // scoreCard.appendChild(totalScore)
     }
 
 }

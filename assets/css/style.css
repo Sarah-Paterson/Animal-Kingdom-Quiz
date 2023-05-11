@@ -32,6 +32,7 @@ main {
     align-items: center;
 }
 
+
 p {
     background-color: var(--transparent-background-color-dark);
     color: var(--text-color-light);
@@ -46,6 +47,7 @@ p {
 }
 
 .container {
+    /* display: block; */
     width: 400px;
     max-width: 80%;
     background-color: var(--transparent-background-color-light);
@@ -117,6 +119,7 @@ p {
     grid-template-columns: repeat(1, auto);
     gap: 10px;
     margin: 20px 0;
+    list-style-type: none;
 }
 
 .controls {
