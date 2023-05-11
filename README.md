@@ -8,7 +8,7 @@ This website was created for the purpose of testing the knowledge of the Disney 
 
 Through the process of coding the Animal Kingdom Quiz, I was able to learn more about JSON and storing data as objects locally. I also had the opportunity to better acquaint myself with arrays, functions, variables, and for loops in JavaScript. The newest coding challenge that I was able to do repeatedly was calling the getElementById to create variables for buttons and containers. My biggest challenges, however, were to create elements, append stored JSON object information into the newly created elements, and to accurately store data as a JSON object array in the local storage.
 
-[Here is a link to the webpage](https:/).
+[Here is a link to the webpage](https://sarah-paterson.github.io/Animal-Kingdom-Quiz/).
 
 ---
 ---
