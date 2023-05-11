@@ -64,7 +64,7 @@ Now you’ve successfully walked through the eight question quiz! From here, you
 ### Scoreboard
 ![Done Screenshot](assets/images/score-board-screenshot.png "Done Screenshot")
 
-Here is the scoreboard with the scores saved locally on my computer. I my husband and I both tried the quiz, and this is the result!
+Here is the scoreboard with the scores saved locally on my computer. My husband and I both tried the quiz, and these are our results!
 
 ---
 
