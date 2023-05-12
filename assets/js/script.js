@@ -25,20 +25,6 @@ let secondsLeft = 60;
 let inputName = document.getElementById("myText");
 let totalScore = JSON.parse(localStorage.getItem("results")) || [];
 
-
-// TODO: list all scores
-// shuffle answers yourself (unless you can find a function)
-
-// if there's time...
-
-// figure out a way to shuffle the answers in a function
-// figure out a way to use the DAK video as the backdrop to the webpage on loop
-// add DAK logo and text on the front page 
-
-// remove next button? have the answers just move to next question?
-// remove color change and add "correct" or "wrong"?
-
-
 startButton.addEventListener("click", startQuiz);
 nextButton.addEventListener("click", () =>{
     currentQuestionIndex++
@@ -151,14 +137,11 @@ if(secondsLeft == 0) {
 
 function inputNameFunction() {
     minuteTimer.classList.add("hide");
-    // secondsLeft = 0;
     completeButton.classList.remove("hide");
     inputNameContainer.classList.remove("hide");
     questionContainer.classList.add("hide");
     saveButton.classList.add("hide");
 
-    // let playerInitials = inputName.value;
-    // setScore(playerInitials);
 
 }
 
